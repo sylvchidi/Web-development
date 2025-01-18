@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaf7ed;
+    }
+
+    .contact-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      padding: 20px;
+    }
+
+    .contact-form {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 20px 40px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h1 {
+      font-size: 25px;
+      color: #3d3c3c;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .input-group > div {
+      flex: 1;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      height: 48px; /* Matches radio button height */
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #252525;
+    }
+
+    .form-group input[type="email"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 80px;
+      resize: none;
+    }
+
+    .radio-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #333;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+      justify-content: flex-start; /* Align text to the left */
+    }
+
+    input[type="radio"] {
+      margin: 0;
+    }
+
+    .form-group input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007f5f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #0b5242;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-form-container">
+    <form class="contact-form">
+      <h1>Contact Us</h1>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <div>
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" placeholder=>
+          </div>
+          <div>
+            <label for="last-name">Last Name *</label>
+            <input type="text" id="last-name" placeholder>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" placeholder=>
+      </div>
+      
+      <div class="form-group">
+        <label>Query Type *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="query-type" value="general" required> General Enquiry</label>
+          <label><input type="radio" name="query-type" value="support"> Support Request</label>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" placeholder=></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label><input type="checkbox" required> I consent to being contacted by the team *</label>
+      </div>
+      
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
