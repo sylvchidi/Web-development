@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Round Cake</title>
+  <style>
+    /* Basic styling for the page */
+    body {
+      background-color: lightblue;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Styling the cake */
+    .cake {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin-bottom: 50px;
+    }
+
+    /* Cake Layers */
+    .layer {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 0;
+      background-color: #fff;
+    }
+
+    /* Layer colors (from bottom to top) */
+    .bottom-layer {
+      background-color: pink;
+      height: 70%;
+      width: 70%;
+      left: 15%;
+    }
+
+    .second-layer {
+      background-color: yellow;
+      height: 60%;
+      width: 60%;
+      left: 20%;
+      bottom: 18%;
+    }
+
+    .third-layer {
+      background-color: lightgreen;
+      height: 50%;
+      width: 50%;
+      left: 25%;
+      bottom: 36%;
+    }
+
+    .top-layer {
+      background-color: lightblue;
+      height: 40%;
+      width: 40%;
+      left: 30%;
+      bottom: 52%;
+    }
+
+    /* Styling the candle */
+    .candle {
+      position: absolute;
+      top: -30px;
+      left: 110px;
+      width: 15px;
+      height: 50px;
+      background-color: #ffcc00;
+      border-radius: 5px;
+    }
+
+    .flame {
+      position: absolute;
+      top: -10px;
+      left: 3px;
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+      border-radius: 50%;
+    }
+
+    /* Styling the message */
+    .message h1 {
+      color: purple;
+      font-size: 40px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cake">
+    <div class="layer bottom-layer"></div>
+    <div class="layer second-layer"></div>
+    <div class="layer third-layer"></div>
+    <div class="layer top-layer"></div>
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <div class="message">
+    <h1>Happy Birthday!</h1>
+  </div>
+
+  <script>
+    // JavaScript to make the flame of the candle flicker slightly
+    const flame = document.querySelector('.flame');
+
+    // Function to make the flame flicker
+    function flickerFlame() {
+      flame.style.transform = 'scale(' + (Math.random() * 0.2 + 0.9) + ')';
+    }
+
+    // Set an interval to flicker the flame every 100ms
+    setInterval(flickerFlame, 100);
+  </script>
+</body>
+</html>
