@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS, JavaScript Together</title>
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #add8e6; /* Light Blue Background */
+        }
+        h1 {
+            color: blue;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: green;
+            color: rgb(233, 226, 226);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HTML, CSS, and JavaScript Together</h1>
+    <p>Click the button to see JavaScript in action!</p>
+    <button onclick="showMessage()">Click Me</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        function showMessage() {
+            alert("Hello! This is JavaScript in action.");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Motorcycle Rider</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #e0e0e0;
+  }
+  
+  .motorcycle {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    background-color: #4961e6;
+    border-radius: 15px 15px 0 0;
+    top: 50px;
+  }
+  
+  .wheel {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000;
+    bottom: -25px;
+  }
+  
+  .wheel.left {
+    left: 20px;
+  }
+  
+  .wheel.right {
+    right: 20px;
+  }
+  
+  .rider {
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    background-color: #f4c542;
+    bottom: 50px;
+    left: 130px;
+    border-radius: 10px;
+  }
+  
+  .helmet {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+  }
+  
+  .arms {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    width: 30px;
+    height: 10px;
+    background-color: #f4c542;
+  }
+  
+  .arms.right {
+    left: 5px;
+    transform: rotate(45deg);
+  }
+
+  .legs {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 10px;
+    height: 40px;
+    background-color: #0a0904;
+  }
+  
+  .legs.right {
+    left: 20px;
+    transform: rotate(60deg);
+  }
+</style>
+</head>
+<body>
+    <h1>Sylvester new bus</h1>
+  <div class="motorcycle">
+    <div class="wheel left"></div>
+    <div class="wheel right"></div>
+    <div class="rider">
+      <div class="helmet"></div>
+      <div class="arms"></div>
+      <div class="arms right"></div>
+      <div class="legs"></div>
+      <div class="legs right"></div>
+    </div>
+  </div>
+</body>
+</html>

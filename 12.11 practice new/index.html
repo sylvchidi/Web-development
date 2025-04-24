@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel Delivery - SwiftParcel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+        .alert {
+            color: red;
+            text-align: center;
+        }
+        #navbar {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        #navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        #navbar a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 40px 0;
+            text-align: center;
+            margin: 20px 0;
+        }
+        section h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #contactForm input, #contactForm textarea {
+            width: 80%;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <a href="javascript:void(0);" onclick="showHome()">Home</a>
+        <a href="javascript:void(0);" onclick="showAboutUs()">About Us</a>
+        <a href="javascript:void(0);" onclick="showServices()">Services</a>
+        <a href="javascript:void(0);" onclick="showContactUs()">Contact Us</a>
+        <a href="javascript:void(0);" onclick="showLogin()">Login</a>
+    </div>
+
+    <h2>Parcel Delivery - SwiftParcel</h2>
+
+    <!-- Home Section -->
+    <div id="homeDiv">
+        <div id="registerDiv" class="hidden">
+            <h3>Register</h3>
+            <form id="registerForm">
+                <input type="text" placeholder="Name" id="registerName" required />
+                <input type="email" placeholder="Email" id="registerEmail" required />
+                <input type="password" placeholder="Password" id="registerPassword" required />
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()">Login</a></p>
+        </div>
+
+        <div id="loginDiv">
+            <h3>Login</h3>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" id="loginEmail" required />
+                <input type="password" placeholder="Password" id="loginPassword" required />
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegister()">Register</a></p>
+        </div>
+
+        <div id="dashboardDiv" class="hidden">
+            <h3>Dashboard</h3>
+            <p id="welcomeMessage"></p>
+            <h4>Create a Parcel</h4>
+            <form id="createParcelForm">
+                <input type="text" id="recipientName" placeholder="Recipient Name" required />
+                <input type="text" id="recipientAddress" placeholder="Recipient Address" required />
+                <button type="submit">Create Parcel</button>
+            </form>
+            <h4>Track Parcel</h4>
+            <input type="text" id="trackingNumber" placeholder="Enter Tracking Number" />
+            <button onclick="trackParcel()">Track Parcel</button>
+            <div id="parcelStatus"></div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div id="aboutUsDiv" class="hidden">
+        <section>
+            <h3>About Us</h3>
+            <p>SwiftParcel is your trusted partner for fast and secure parcel delivery. We ensure that your parcels arrive safely and on time, whether it's a gift for a loved one or important business documents.</p>
+        </section>
+    </div>
+
+    <!-- Services Section -->
+    <div id="servicesDiv" class="hidden">
+        <section>
+            <h3>Our Services</h3>
+            <p>We offer a variety of parcel delivery services to meet your needs:</p>
+            <ul>
+                <li>Standard Delivery</li>
+                <li>Express Delivery</li>
+                <li>Same-day Delivery</li>
+                <li>International Shipping</li>
+                <li>Parcel Tracking</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contactUsDiv" class="hidden">
+        <section>
+            <h3>Contact Us</h3>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" id="contactName" required />
+                <input type="email" placeholder="Your Email" id="contactEmail" required />
+                <textarea placeholder="Your Message" id="contactMessage" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Alert Section -->
+    <div id="alertDiv" class="alert hidden"></div>
+
+    <script>
+        let users = [];
+        let parcels = [];
+        let loggedInUser = null;
+
+        function showHome() {
+            hideAllSections();
+            document.getElementById('homeDiv').classList.remove('hidden');
+        }
+
+        function showAboutUs() {
+            hideAllSections();
+            document.getElementById('aboutUsDiv').classList.remove('hidden');
+        }
+
+        function showServices() {
+            hideAllSections();
+            document.getElementById('servicesDiv').classList.remove('hidden');
+        }
+
+        function showContactUs() {
+            hideAllSections();
+            document.getElementById('contactUsDiv').classList.remove('hidden');
+        }
+
+        function hideAllSections() {
+            document.getElementById('homeDiv').classList.add('hidden');
+            document.getElementById('aboutUsDiv').classList.add('hidden');
+            document.getElementById('servicesDiv').classList.add('hidden');
+            document.getElementById('contactUsDiv').classList.add('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('loginDiv').classList.add('hidden');
+            document.getElementById('registerDiv').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('registerDiv').classList.add('hidden');
+            document.getElementById('loginDiv').classList.remove('hidden');
+        }
+
+        // Registration Logic
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            const userExists = users.find(user => user.email === email);
+            if (userExists) {
+                showAlert('User already exists!');
+                return;
+            }
+
+            const newUser = { name, email, password };
+            users.push(newUser);
+            showAlert('Registration successful! You can now login.', 'success');
+            showLogin();
+        });
+
+        // Login Logic
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(user => user.email === email && user.password === password);
+            if (!user) {
+                showAlert('Invalid credentials!');
+                return;
+            }
+
+            loggedInUser = user;
+            document.getElementById('loginDiv').classList.add('hidden');
+            showDashboard(user);
+        });
+
+        function showDashboard(user) {
+            document.getElementById('welcomeMessage').textContent = `Welcome ${user.name}!`;
+            document.getElementById('dashboardDiv').classList.remove('hidden');
+        }
+
+        document.getElementById('createParcelForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const recipientName = document.getElementById('recipientName').value;
+            const recipientAddress = document.getElementById('recipientAddress').value;
+            const trackingNumber = 'TN-' + Math.floor(Math.random() * 1000000);
+
+            const parcel = {
+                sender: loggedInUser.email,
+                recipientName,
+                recipientAddress,
+                trackingNumber,
+                status: 'Pending'
+            };
+            parcels.push(parcel);
+            showAlert(`Parcel created successfully! Tracking Number: ${trackingNumber}`);
+        });
+
+        function trackParcel() {
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const parcel = parcels.find(parcel => parcel.trackingNumber === trackingNumber);
+
+            if (parcel) {
+                document.getElementById('parcelStatus').textContent = `Status: ${parcel.status}`;
+            } else {
+                document.getElementById('parcelStatus').textContent = 'Parcel not found!';
+            }
+        }
+
+        function logout() {
+            loggedInUser = null;
+            document.getElementById('dashboardDiv').classList.add('hidden');
+            showLogin();
+        }
+
+        function showAlert(message, type = 'error') {
+            const alertDiv = document.getElementById('alertDiv');
+            alertDiv.textContent = message;
+            alertDiv.classList.remove('hidden');
+            if (type === 'success') {
+                alertDiv.style.color = 'green';
+            } else {
+                alertDiv.style.color = 'red';
+            }
+            setTimeout(() => alertDiv.classList.add('hidden'), 3000);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyril Free Website</title>
+  
+  <!-- Import Inter Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Century Gothic',Century Golthic;
+      background-color: #fff5ef;
+      color: #33475b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1100px;
+      padding: 0px;
+      background-color: #fff5ef;
+      border-radius: 20px;
+      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+
+    /* Image Section */
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-section img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 1px;
+    }
+
+    /* Content Section */
+    .content-section {
+      flex: 1;
+      padding-left: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-section h1 {
+      font-size: 2.8em;
+      font-weight: 2000;
+      margin-bottom: 10px;
+      color: #112335;
+    }
+
+    .content-section p {
+      font-size: 1.2em;
+      font-weight: 80;
+      margin-bottom: 35px;
+      color: #0d161f;
+    }
+
+    /* Features List */
+    .features {
+      display: grid;
+      grid-template-columns: 1.3fr 1.3fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: 1000;
+      color: #18232ef1;
+    }
+
+    /* Fixed Equal Checkmark Styling */
+    .checkmark{
+      width: 20px; /* Fixed width for consistency */
+      height: 20px; /* Fixed width for consistency */
+      background-color:  #389253; /* Green checkmark circle */
+      color: #ffffff; /* White checkmark */
+      font-size: 13px;
+      font-weight: light;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%; /* Perfectly rounded */
+      margin-right: 15px;
+      flex-shrink: 0; /* Prevent resizing */
+    
+    }
+
+    /* CTA Button */
+    .cta-button {
+      background-color: #ff5c35;
+      color: #fff;
+      border: none;
+      padding: 20px 30px;
+      font-size: 1.2em;
+      font-weight: 750;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      max-width: 250px;
+    }
+
+    .cta-button:hover {
+      background-color: #e55030;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Image Section -->
+    <div class="image-section">
+      <img src="C:\Users\user\Desktop\cysyvster.jpg" alt="Desktop image Users">
+    </div>
+
+    <!-- Right Content Section -->
+    <div class="content-section">
+      <h1>HubSpot’s Free Website Builder</h1>
+      <p>Create and customize your own business website with an easy drag-and-drop website builder.</p>
+      
+      <div class="features">
+        <div class="feature-item">
+          <div class="checkmark">✓</div>
+          Build a website without any coding skills.
+        </div>
+        <div class="feature-item">
+          <div class="checkmark">✓</div>
+          Pre-built themes and templates.
+        </div>
+        <div class="feature-item">
+          <div class="checkmark">✓</div>
+          Built-in marketing tools and features.
+        </div>
+        <div class="feature-item">
+          <div class="checkmark">✓</div>
+          And more!
+        </div>
+      </div>
+
+      <button class="cta-button">Get Started for Free</button>
+    </div>
+  </div>
+</body>
+</html>
